@@ -15,28 +15,24 @@ menu_settings:
       url: '/'
     - title: 'Projects'
       url: '/projects/'
-    - title: 'Blog'
-      url: '/blog/'
     - title: 'About'
       url: '/about/'
-    - title: 'Elements'
-      url: '/elements/'
 
 
 # Call to action button
 cta_button:
   enable: true
   cta_button_link: "/contact/"
-  cta_button_text: Say Hello!
+  cta_button_text: Contact
 
 
 #-------------------------------
 # Author Settings
 author:
-  author_intro: Hey, I’m Kevin Jones
-  author_name: Kevin Jones
-  author_role: Product Designer
-  author_avatar: /images/01.jpg
+  author_intro: Hi, I'm Hunter
+  author_name: Hunter Gill
+  author_role: 
+  author_avatar: /images/linkedin_profile.jpg
 
 
 #-------------------------------
@@ -48,12 +44,11 @@ sidebar:
 
 # Social Links
 social:
+- {icon: "fa-brands fa-github", name: "Github", link: "https://github.com/hmgill"}
+- {icon: "fa-brands fa-linkedin", name: "LinkedIn", link: "https://www.linkedin.com/in/hunter-gill-4bb16532a/"}
 - {icon: "fa-brands fa-x-twitter", name: "Twitter", link: "https://twitter.com"}
 - {icon: "fa-brands fa-facebook", name: "Facebook", link: "https://facebook.com"}
-- {icon: "fa-brands fa-github", name: "Github", link: "https://github.com"}
-- {icon: "fa-brands fa-mastodon", name: "Mastodon", link: "https://mastodon.social"}
 - {icon: "fa-brands fa-instagram", name: "Instagram", link: "https://instagram.com"}
-- {icon: "fa-brands fa-spotify", name: "Spotify", link: "https://spotify.com"}
 - {icon: "fa-brands fa-vimeo-v", name: "Vimeo", link: "https://vimeo.com"}
 
 # Example of adding a new link to the footer - {icon: "fa-brands fa-pinterest", name: "Pinterest", link: "https://pinterest.com"}
