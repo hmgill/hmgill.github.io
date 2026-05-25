@@ -1,9 +1,9 @@
 #-------------------------------
 # Site Settings
-title: Baleon
+title: Hunter Mathias Gill
 logo: "/images/logo.svg" # You can add own logo. For example '/images/logo.png'.
 logo_dark: "/images/logo-dark.svg"
-description: Baleon is a stylish and multifunctional theme for Jekyll
+description: 
 color_scheme: auto # You can choose three modes auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themself.
 
 
@@ -38,8 +38,8 @@ author:
 #-------------------------------
 # Sidebar Section Settings
 sidebar:
-  sidebar_title: One Stop Daily <em>News,</em> <em>Article,</em> <em>Inspiration</em>. # You can add an 'em' element to highlight text.
-  sidebar_description: Welcome to a unique world of creativity and innovation! Here you'll find engaging articles, helpful tips, and captivating stories from the realms of design.
+  sidebar_title: 
+  sidebar_description: Explainable AI (xAI) models, traceable agentic systems, interactive dashboards, and curated databases. 
 
 
 # Social Links
@@ -59,38 +59,23 @@ social:
 # Projects Settings
 projects:
   enable: true
-  projects_title: Product Design <em>Showcase</em> # You can add an 'em' element to highlight text.
-  projects_description: I present my top-tier projects, meticulously crafted with unwavering passion, simplicity, boundless creativity, and unparalleled attention to detail.
+  projects_title: Showcase
+  projects_description: Find of my some recent work below! 
 
 
 #-------------------------------
 # Testimonials Settings
 testimonials:
-  enable: true
+  enable: false
   testimonials_title: Trusted by <em>Professionals</em> # You can add an 'em' element to highlight text.
   testimonials_description: Join our community of creative professionals where you can develop your talents and reach new heights in design.
 
-testimonial-items:
-  - name: Amelia Jones
-    image: "/images/client-1.jpg"
-    designation : Network Engineer
-    content : This product designer is an expert in his field. His ability to understand the needs of clients and create designs that satisfy them is astounding.
-
-  - name: Ethan Robinson
-    image: "/images/client-2.jpg"
-    designation : Blockchain Developer
-    content : Kevin is a true visionary in the field of product design. His ability to think outside the box and push boundaries is what sets him apart from the rest.
-
-  - name: Matthew Garcia
-    image: "/images/client-3.jpg"
-    designation : IT Support Specialist
-    content : I cannot recommend this designer highly enough. Their designs are not only visually stunning but also highly functional, making them perfect for our needs.
 
 
 #-------------------------------
 # Blog Section Settings
 blog:
-  enable: true
+  enable: false
   blog_title: Latest <em>Articles</em> & <em>Publications</em> # You can add an 'em' element to highlight text.
   blog_description: Discover the latest industry news, insights, and trends in a few clicks.
 
@@ -98,34 +83,15 @@ blog:
 #-------------------------------
 # Faq (Frequently asked questions) Settings
 faq:
-  enable: true
+  enable: false
   faq_title: Questions? <em>Answers</em>. # You can add an 'em' element to highlight text.
   faq_description: Find solutions to common queries here.
-
-faq_items:
-  - title: What are your main areas of expertise in product design?
-    description: My specialization includes user interface (UI) and user experience (UX) design, prototyping, as well as researching and testing user needs.
-
-  - title: Can you provide examples of your work?
-    description: Yes, on my website, you can find a portfolio with examples of my projects and designs.
-
-  - title: What is your experience with various platforms and devices?
-    description: I have extensive experience working with various platforms, including websites, mobile applications, tablets, and other devices.
-
-  - title: What tools and software do you use for work?
-    description: I work with tools such as Sketch, Adobe XD, Figma, InVision for creating designs and prototypes, and also use Jira and Trello for project management.
-
-  - title: How long does it take to develop a product design?
-    description: The development time depends on the complexity of the project. Usually, creating a product design takes from several weeks to several months.
-
-  - title: How can I contact you to discuss my project?
-    description: You can contact me through the contact form on my website or directly via email. I'm always open to new projects and ready to discuss your idea.
 
 
 #-------------------------------
 # Gallery Settings
 gallery:
-  enable: true
+  enable: false
   gallery_title: A Visual Journey Through <em>My World</em> # You can add an 'em' element to highlight text.
   gallery_description: Step into my visual world where each image tells a story. From the bustling streets of urban landscapes to the serene beauty of nature, explore the moments that inspire and define my journey.
   gallery_caption:
@@ -142,7 +108,7 @@ gallery_images:
 #-------------------------------
 # Newsletter Settings
 mailchimp:
-  enable: true
+  enable: false
   mailchimp_title: Subscribe to Our <em>Newsletter</em> # You can add an 'em' element to highlight text.
   mailchimp_description: Join now and never miss out on our stuff again. Because you are worth it!
   mailchimp_identifier: gmail.us21.list-manage.com/subscribe/post?u=8aeb9c31a5c97a3a5f9ff2740&amp;id=0e31fd7793&amp # Add your MailChimp form identifier. For example - gmail.us21.list-manage.com/subscribe/post?u=8aeb9c31a5c97a3a5f9ff2740&amp;id=0e31fd7793&amp
@@ -153,8 +119,8 @@ mailchimp:
 #-------------------------------
 # Contact Settings
 contact:
-  email: your@email.com # Add your form_id
-  description: Baleon comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want. # Add a description of your form
+  email: mathgcloud@gmail.com # Add your form_id
+  description: 
 
 # NOTE
 # Baleon theme comes with a contact form built-in. You can use this form with Formspree (https://formspree.io/) service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
