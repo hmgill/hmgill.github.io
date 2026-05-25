@@ -100,3 +100,29 @@
     }
   }
 }
+
+.project {
+  .project__content {
+    .project__head {
+      .project__image {
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: rgba(var(--rgb-color), 0.45);
+          backdrop-filter: saturate(180%) blur(4px);
+          -webkit-backdrop-filter: saturate(180%) blur(4px);
+          transition: opacity 0.35s ease, backdrop-filter 0.35s ease;
+          pointer-events: none;
+        }
+
+        &:hover::after {
+          opacity: 0;
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+      }
+    }
+  }
+}
