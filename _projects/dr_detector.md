@@ -2,7 +2,7 @@
 title: DR-Detector
 date: 2022-11-08 08:00:00 +0000
 subtitle: Deep Learning · Published Work
-image: '/images/project-dr-detector.jpg'
+image: '/images/project_dr_detector.jpg'
 ---
 
 DR-detector is a diabetic retinopathy (DR) detection framework that combines transfer learning (TL) with clinically interpretable retinal lesion features extracted via deep learning segmentation. Rather than relying solely on abstract image representations from pretrained networks, DR-detector grounds its predictions in the same lesion findings — exudates, microaneurysms, and hemorrhages — that clinicians use to diagnose and grade DR.
