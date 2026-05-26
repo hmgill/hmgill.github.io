@@ -10,7 +10,7 @@ Outside of research and engineering, I spend most of my free time hiking and tra
 
 ***
 
-![Iceland South Coast](images/iceland1.jpg)
+![Iceland South Coast](/images/iceland1.jpg)
 *South Coast, Iceland*
 
 <div class="gallery-box">
@@ -20,4 +20,4 @@ Outside of research and engineering, I spend most of my free time hiking and tra
   </div>
 </div>
 
-![Iceland](images/iceland4.jpg#wide)
+![Iceland](/images/iceland4.jpg#wide)
