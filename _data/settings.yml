@@ -66,6 +66,24 @@ projects:
 
 
 #-------------------------------
+# Resume / CV Settings
+resume:
+  enable: true
+  resume_title: Resume & <em>CV</em> # You can add an 'em' element to highlight text.
+  resume_description: Download my latest resume for a quick overview, or my full CV for research and publication history.
+
+resume_items:
+  - title: Resume
+    description: A concise summary of my professional experience, skills, and recent roles.
+    file: /files/hunter-gill-resume.pdf
+    icon: fa-solid fa-file-lines
+  - title: Curriculum Vitae
+    description: Full academic CV, including publications, research projects, and presentations.
+    file: /files/hunter-gill-cv.pdf
+    icon: fa-solid fa-graduation-cap
+
+
+#-------------------------------
 # Testimonials Settings
 testimonials:
   enable: false

@@ -1,0 +1,45 @@
+{% if site.data.settings.resume.enable == true %}
+<!-- begin section resume -->
+<section class="section section-resume">
+  <div class="row">
+    <div class="col col-12">
+
+      <div class="section__info">
+        {% if site.data.settings.resume.resume_title %}
+          <h2 class="section__title">{{ site.data.settings.resume.resume_title }}</h2>
+        {% endif %}
+        {% if site.data.settings.resume.resume_description %}
+          <p class="section__description">{{ site.data.settings.resume.resume_description }}</p>
+        {% endif %}
+      </div>
+
+      <div class="row">
+        {% for resume_item in site.data.settings.resume_items %}
+        <div class="col col-6 col-t-12">
+          <div class="resume-item">
+            {% if resume_item.icon %}
+            <div class="resume-item__icon">
+              <i class="{{ resume_item.icon }}"></i>
+            </div>
+            {% endif %}
+            <div class="resume-item__content">
+              <h3 class="resume-item__title">{{ resume_item.title }}</h3>
+              {% if resume_item.description %}
+                <p class="resume-item__description">{{ resume_item.description }}</p>
+              {% endif %}
+              {% if resume_item.file %}
+              <a href="{{ resume_item.file | relative_url }}" class="button resume-item__button" download>
+                Download PDF <i class="fa-solid fa-arrow-down"></i>
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- end section resume -->
+{% endif %}
