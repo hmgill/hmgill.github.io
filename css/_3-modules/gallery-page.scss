@@ -232,6 +232,14 @@ body.model-modal-open {
   overflow: hidden;
 }
 
+/* The [hidden] attribute is only a UA-stylesheet `display: none`, so ANY
+   author `display` declaration below would beat it — leaving an invisible
+   full-screen modal on top of the page, eating every click. Keep this. */
+.model-modal[hidden],
+.model-modal [hidden] {
+  display: none !important;
+}
+
 .model-modal {
   position: fixed;
   z-index: 200;
@@ -244,10 +252,14 @@ body.model-modal-open {
   height: 100%;
   padding: 24px;
   opacity: 0;
-  transition: opacity .25s;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .25s, visibility .25s;
 
   &.is-visible {
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .model-modal__backdrop {
