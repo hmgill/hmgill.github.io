@@ -26,4 +26,11 @@ sections:
         model: /models/fossils/trilobite.glb
         caption: Lower Devonian. Lhandar Formation.
         # poster: /images/gallery/fossils/trilobite-poster.webp   # optional, shown while the model loads
-        download: true                                          # optional, adds a "Download .glb" link in the popup
+        download: true  
+
+      - title: Green River Formation Fish
+        subtitle: Diplomystus dentatus
+        image: /images/gallery/fossils/fish1.PNG
+        model: /models/fossils/fish1.glb
+        caption: Green River Formation. Wyoming.
+        download: true                                          
