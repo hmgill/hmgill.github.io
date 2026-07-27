@@ -1,0 +1,137 @@
+---
+layout: default
+title: Gallery
+description: Scanned specimens, renders, and visual work.
+image: '/images/100.jpg'
+---
+
+{% assign gallery = site.data.gallery %}
+
+<!-- begin page section head -->
+<div class="container">
+  <div class="page-section-head">
+    {% if gallery.page.title %}
+      <h1 class="page-section-title">{{ gallery.page.title }}</h1>
+    {% endif %}
+    {% if gallery.page.description %}
+      <p class="page-section-description">{{ gallery.page.description }}</p>
+    {% endif %}
+  </div>
+</div>
+<!-- end page section head -->
+
+<div class="gallery-page container">
+
+  {% for section in gallery.sections %}
+  {% assign columns = section.columns | default: 3 %}
+  {% if columns == 2 %}
+    {% assign col_class = 'col-6 col-d-6 col-t-12' %}
+  {% elsif columns == 4 %}
+    {% assign col_class = 'col-3 col-d-4 col-t-6 col-m-12' %}
+  {% else %}
+    {% assign col_class = 'col-4 col-d-6 col-t-12' %}
+  {% endif %}
+
+  <!-- begin gallery section: {{ section.title }} -->
+  <section class="gallery-section" id="{{ section.id | default: forloop.index }}">
+
+    <div class="gallery-section__head">
+      <h2 class="gallery-section__title">{{ section.title }}</h2>
+      {% if section.description %}
+        <p class="gallery-section__description">{{ section.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="row">
+      {% for item in section.items %}
+
+      {% if section.layout == 'models' and item.model %}
+      <div class="gallery-item col {{ col_class }}">
+        <button type="button"
+                class="model-card"
+                data-model="{{ item.model | relative_url }}"
+                data-title="{{ item.title | strip_html | escape }}"
+                data-subtitle="{{ item.subtitle | strip_html | escape }}"
+                data-caption="{{ item.caption | strip_html | escape }}"
+                {% if item.poster %}data-poster="{{ item.poster | relative_url }}"{% endif %}
+                {% if item.download %}data-download="true"{% endif %}
+                aria-label="Open {{ item.title | strip_html | escape }} in 3D viewer">
+
+          <span class="model-card__head">
+            <span class="model-card__badge"><i class="fa-solid fa-cube" aria-hidden="true"></i> 3D</span>
+            <span class="model-card__image">
+              <img class="lazy" data-src="{{ item.image | relative_url }}" alt="{{ item.title | strip_html | escape }}">
+            </span>
+            <span class="model-card__hint">
+              <i class="fa-solid fa-up-right-and-down-left-from-center" aria-hidden="true"></i>
+              View in 3D
+            </span>
+          </span>
+
+          <span class="model-card__info">
+            <span class="model-card__title">{{ item.title }}</span>
+            {% if item.subtitle %}
+              <span class="model-card__subtitle">{{ item.subtitle }}</span>
+            {% endif %}
+          </span>
+
+        </button>
+      </div>
+
+      {% else %}
+      <div class="gallery-item col {{ col_class }}">
+        <figure class="gallery-figure">
+          <span class="gallery-figure__image">
+            <img class="lazy" data-src="{{ item.image | relative_url }}" alt="{{ item.title | strip_html | escape }}">
+          </span>
+          {% if item.title or item.subtitle %}
+          <figcaption class="gallery-figure__info">
+            {% if item.title %}<span class="gallery-figure__title">{{ item.title }}</span>{% endif %}
+            {% if item.subtitle %}<span class="gallery-figure__subtitle">{{ item.subtitle }}</span>{% endif %}
+          </figcaption>
+          {% endif %}
+        </figure>
+      </div>
+      {% endif %}
+
+      {% endfor %}
+    </div>
+
+  </section>
+  <!-- end gallery section: {{ section.title }} -->
+  {% endfor %}
+
+</div>
+
+<!-- begin 3D model viewer popup -->
+<div class="model-modal" id="model-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="model-modal-title">
+  <div class="model-modal__backdrop" data-model-close></div>
+
+  <div class="model-modal__dialog">
+    <button type="button" class="model-modal__close" data-model-close aria-label="Close 3D viewer">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+
+    <div class="model-modal__stage" data-model-stage>
+      <div class="model-modal__loading" data-model-loading>
+        <span class="model-modal__spinner" aria-hidden="true"></span>
+        <span>Loading model…</span>
+      </div>
+      <div class="model-modal__error" data-model-error hidden>
+        Sorry — that model couldn’t be loaded.
+      </div>
+    </div>
+
+    <div class="model-modal__info">
+      <h2 class="model-modal__title" id="model-modal-title" data-model-title></h2>
+      <p class="model-modal__subtitle" data-model-subtitle hidden></p>
+      <p class="model-modal__caption" data-model-caption hidden></p>
+      <a class="model-modal__download" data-model-download href="#" download hidden>
+        <i class="fa-solid fa-download" aria-hidden="true"></i> Download .glb
+      </a>
+    </div>
+  </div>
+</div>
+<!-- end 3D model viewer popup -->
+
+<script src="{{ '/js/gallery-3d.js' | relative_url }}" defer></script>
