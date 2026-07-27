@@ -22,7 +22,7 @@ sections:
     items:
       - title: Trilobite
         subtitle: Zlichovasis rugosa
-        image: /images/gallery/fossils/trilobite.png
+        image: /images/gallery/fossils/trilobite.PNG
         model: /models/fossils/trilobite.glb
         caption: Lower Devonian. Lhandar Formation.
         # poster: /images/gallery/fossils/trilobite-poster.webp   # optional, shown while the model loads
