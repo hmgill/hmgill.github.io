@@ -22,6 +22,7 @@
   var subtitleEl   = modal.querySelector('[data-model-subtitle]');
   var captionEl    = modal.querySelector('[data-model-caption]');
   var downloadEl   = modal.querySelector('[data-model-download]');
+  var closeButton  = modal.querySelector('.model-modal__close');
   var closeButtons = modal.querySelectorAll('[data-model-close]');
 
   var viewer = null;          // the current <model-viewer> element
@@ -147,7 +148,7 @@
       modal.classList.add('is-visible');
     });
 
-    closeButtons[0].focus();
+    if (closeButton) closeButton.focus();
 
     loadModelViewer().then(function () {
       // Guard against the user closing before the library arrives
