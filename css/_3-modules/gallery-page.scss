@@ -1,205 +1,421 @@
-/* =========================================================
-// Gallery — 3D model popup viewer
-// Uses <model-viewer> (https://modelviewer.dev), loaded on
-// demand the first time a specimen is opened so the gallery
-// page itself stays light.
-========================================================= */
+/* Gallery Page */
+.gallery-page {
+  margin-bottom: 20px;
+}
 
-(function () {
-  'use strict';
+.gallery-section {
+  margin-bottom: 64px;
 
-  var MODEL_VIEWER_SRC = 'https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js';
+  &:last-child {
+    margin-bottom: 0;
+  }
 
-  var modal = document.getElementById('model-modal');
-  var cards = document.querySelectorAll('.model-card');
+  .gallery-section__head {
+    max-width: 720px;
+    margin-bottom: 28px;
+  }
 
-  if (!modal || !cards.length) return;
+  .gallery-section__title {
+    margin-bottom: 8px;
+    font-size: 32px;
+    line-height: 1.2;
+  }
 
-  var stage        = modal.querySelector('[data-model-stage]');
-  var loadingEl    = modal.querySelector('[data-model-loading]');
-  var errorEl      = modal.querySelector('[data-model-error]');
-  var titleEl      = modal.querySelector('[data-model-title]');
-  var subtitleEl   = modal.querySelector('[data-model-subtitle]');
-  var captionEl    = modal.querySelector('[data-model-caption]');
-  var downloadEl   = modal.querySelector('[data-model-download]');
-  var closeButtons = modal.querySelectorAll('[data-model-close]');
+  .gallery-section__description {
+    margin-bottom: 0;
+    color: var(--text-alt-color);
+  }
 
-  var viewer = null;          // the current <model-viewer> element
-  var lastFocused = null;     // card to return focus to on close
-  var scriptPromise = null;
+  @media (max-width: $tablet) {
+    margin-bottom: 48px;
+
+    .gallery-section__title {
+      font-size: 26px;
+    }
+  }
+}
+
+.gallery-item {
+  display: flex;
+  margin-bottom: 32px;
+}
 
 
-  /* =======================
-  // Load the library once
-  ======================= */
-  function loadModelViewer() {
-    if (scriptPromise) return scriptPromise;
+/* Model Card */
+.model-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  font-family: inherit;
+  border: 3px solid var(--project-card-border);
+  border-radius: 24px;
+  background: none;
+  overflow: hidden;
+  cursor: pointer;
+  appearance: none;
 
-    scriptPromise = new Promise(function (resolve, reject) {
-      if (window.customElements && customElements.get('model-viewer')) {
-        resolve();
-        return;
+  &:hover,
+  &:focus-visible {
+    .model-card__image img {
+      transform: scale3d(1.04, 1.04, 1);
+    }
+
+    .model-card__hint {
+      opacity: 1;
+    }
+
+    .model-card__info {
+      background: var(--background-alt-color-2);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--brand-color);
+    outline-offset: 3px;
+  }
+
+  .model-card__head {
+    position: relative;
+    display: block;
+  }
+
+  .model-card__image {
+    position: relative;
+    display: block;
+    aspect-ratio: 4/3;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    transform: translate(0);
+    background: var(--background-alt-color-2);
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      user-select: none;
+      will-change: transform;
+      transition: all .35s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+    }
+
+    @supports not (aspect-ratio: 4/3) {
+      padding-bottom: 75%;
+    }
+  }
+
+  .model-card__badge {
+    position: absolute;
+    z-index: 2;
+    top: 12px;
+    left: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--white);
+    background: var(--button-gradient-color);
+
+    i {
+      font-size: 11px;
+    }
+  }
+
+  .model-card__hint {
+    position: absolute;
+    z-index: 2;
+    right: 12px;
+    bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--button-color);
+    background: var(--button-background-color);
+    opacity: 0;
+    transition: opacity .25s;
+
+    i {
+      font-size: 12px;
+    }
+  }
+
+  .model-card__info {
+    flex: 1 1 auto;
+    padding: 18px 20px 22px;
+    border-radius: 0 0 20px 20px;
+    background: var(--project-card-bg);
+    transition: all .35s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+  }
+
+  .model-card__title {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--heading-font-color);
+  }
+
+  .model-card__subtitle {
+    display: block;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-alt-color);
+  }
+
+  @media (hover: none) {
+    .model-card__hint {
+      opacity: 1;
+    }
+  }
+}
+
+
+/* Plain Image Figure (non-3D sections) */
+.gallery-figure {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  border: 3px solid var(--project-card-border);
+  border-radius: 24px;
+  overflow: hidden;
+
+  .gallery-figure__image {
+    position: relative;
+    display: block;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--background-alt-color-2);
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .gallery-figure__info {
+    flex: 1 1 auto;
+    padding: 18px 20px 22px;
+    background: var(--project-card-bg);
+  }
+
+  .gallery-figure__title {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--heading-font-color);
+  }
+
+  .gallery-figure__subtitle {
+    display: block;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-alt-color);
+  }
+}
+
+
+/* 3D Model Popup */
+body.model-modal-open {
+  overflow: hidden;
+}
+
+.model-modal {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity .25s;
+
+  &.is-visible {
+    opacity: 1;
+  }
+
+  .model-modal__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-color);
+    cursor: zoom-out;
+
+    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
+      background: var(--background-rgba);
+    }
+  }
+
+  .model-modal__dialog {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 960px;
+    max-height: 100%;
+    border: 3px solid var(--project-card-border);
+    border-radius: 24px;
+    background: var(--background-color);
+    overflow: hidden;
+  }
+
+  .model-modal__close {
+    position: absolute;
+    z-index: 3;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    color: var(--button-color);
+    background: var(--button-background-color);
+    cursor: pointer;
+    transition: $global-transition;
+
+    &:hover {
+      background: var(--button-background-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--brand-color);
+      outline-offset: 2px;
+    }
+  }
+
+  .model-modal__stage {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 60vh;
+    background: var(--background-alt-color);
+
+    model-viewer {
+      display: block;
+      width: 100%;
+      height: 100%;
+      --poster-color: transparent;
+      --progress-bar-color: var(--brand-color);
+      --progress-mask: transparent;
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
       }
-      var script = document.createElement('script');
-      script.type = 'module';
-      script.src = MODEL_VIEWER_SRC;
-      script.onload = function () {
-        customElements.whenDefined('model-viewer').then(resolve, reject);
-      };
-      script.onerror = function () {
-        reject(new Error('Failed to load model-viewer'));
-      };
-      document.head.appendChild(script);
-    });
-
-    return scriptPromise;
-  }
-
-
-  /* =======================
-  // Build the viewer
-  ======================= */
-  function createViewer(data) {
-    var el = document.createElement('model-viewer');
-
-    el.setAttribute('src', data.model);
-    el.setAttribute('alt', data.title ? ('3D model of ' + data.title) : '3D model');
-    el.setAttribute('camera-controls', '');
-    el.setAttribute('auto-rotate', '');
-    el.setAttribute('auto-rotate-delay', '1200');
-    el.setAttribute('rotation-per-second', '18deg');
-    el.setAttribute('interaction-prompt', 'none');
-    el.setAttribute('touch-action', 'none');
-    el.setAttribute('shadow-intensity', '0.9');
-    el.setAttribute('shadow-softness', '0.8');
-    el.setAttribute('environment-image', 'neutral');
-    el.setAttribute('exposure', '1.1');
-    el.setAttribute('min-field-of-view', '10deg');
-    el.setAttribute('max-field-of-view', '90deg');
-    el.setAttribute('ar', '');
-    el.setAttribute('ar-modes', 'webxr scene-viewer quick-look');
-
-    if (data.poster) {
-      el.setAttribute('poster', data.poster);
-    }
-
-    el.addEventListener('load', function () {
-      loadingEl.hidden = true;
-    });
-
-    el.addEventListener('error', function () {
-      loadingEl.hidden = true;
-      errorEl.hidden = false;
-    });
-
-    return el;
-  }
-
-
-  /* =======================
-  // Open / close
-  ======================= */
-  function openModal(card) {
-    var data = {
-      model:    card.getAttribute('data-model'),
-      poster:   card.getAttribute('data-poster'),
-      title:    card.getAttribute('data-title') || '',
-      subtitle: card.getAttribute('data-subtitle') || '',
-      caption:  card.getAttribute('data-caption') || '',
-      download: card.getAttribute('data-download') === 'true'
-    };
-
-    if (!data.model) return;
-
-    lastFocused = card;
-
-    // Reset state
-    if (viewer) {
-      viewer.remove();
-      viewer = null;
-    }
-    loadingEl.hidden = false;
-    errorEl.hidden = true;
-
-    // Fill in the text
-    titleEl.textContent = data.title;
-
-    subtitleEl.textContent = data.subtitle;
-    subtitleEl.hidden = !data.subtitle;
-
-    captionEl.textContent = data.caption;
-    captionEl.hidden = !data.caption;
-
-    if (data.download) {
-      downloadEl.href = data.model;
-      downloadEl.hidden = false;
-    } else {
-      downloadEl.hidden = true;
-    }
-
-    // Show the modal
-    modal.hidden = false;
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('model-modal-open');
-
-    // rAF so the CSS transition has a frame to work with
-    requestAnimationFrame(function () {
-      modal.classList.add('is-visible');
-    });
-
-    closeButtons[0].focus();
-
-    loadModelViewer().then(function () {
-      // Guard against the user closing before the library arrives
-      if (modal.hidden) return;
-      viewer = createViewer(data);
-      stage.appendChild(viewer);
-    }).catch(function () {
-      loadingEl.hidden = true;
-      errorEl.hidden = false;
-    });
-  }
-
-  function closeModal() {
-    if (modal.hidden) return;
-
-    modal.classList.remove('is-visible');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('model-modal-open');
-
-    // Tear down after the fade so WebGL context is released
-    setTimeout(function () {
-      if (viewer) {
-        viewer.remove();
-        viewer = null;
-      }
-      modal.hidden = true;
-    }, 250);
-
-    if (lastFocused) {
-      lastFocused.focus();
-      lastFocused = null;
     }
   }
 
+  .model-modal__loading,
+  .model-modal__error {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-alt-color);
+    pointer-events: none;
+  }
 
-  /* =======================
-  // Events
-  ======================= */
-  cards.forEach(function (card) {
-    card.addEventListener('click', function () {
-      openModal(card);
-    });
-  });
+  .model-modal__spinner {
+    display: block;
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--border-color);
+    border-top-color: var(--brand-color);
+    border-radius: 50%;
+    animation: model-spin .8s linear infinite;
+  }
 
-  closeButtons.forEach(function (button) {
-    button.addEventListener('click', closeModal);
-  });
+  .model-modal__info {
+    flex: 0 0 auto;
+    padding: 20px 24px 24px;
+    border-top: 1px solid var(--border-color);
+    background: var(--project-card-bg);
+    overflow-y: auto;
+  }
 
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' || event.key === 'Esc') {
-      closeModal();
+  .model-modal__title {
+    margin-bottom: 2px;
+    font-size: 22px;
+  }
+
+  .model-modal__subtitle {
+    margin-bottom: 0;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-alt-color);
+  }
+
+  .model-modal__caption {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 15px;
+    color: var(--text-alt-color);
+  }
+
+  .model-modal__download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  @media (max-width: $tablet) {
+    padding: 12px;
+
+    .model-modal__dialog {
+      border-radius: 20px;
     }
-  });
 
-})();
+    .model-modal__stage {
+      height: 50vh;
+    }
+
+    .model-modal__info {
+      padding: 16px 18px 20px;
+    }
+
+    .model-modal__title {
+      font-size: 19px;
+    }
+  }
+}
+
+@keyframes model-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
