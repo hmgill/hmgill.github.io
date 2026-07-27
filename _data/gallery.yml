@@ -1,0 +1,41 @@
+#-------------------------------
+# Gallery Page Settings
+#
+# Each entry under `sections` becomes its own titled block on /gallery/.
+# `layout` controls how the items are rendered:
+#   models  -> screenshot cards that open a .glb in the 3D viewer popup
+#   images  -> plain image grid (click-to-zoom, uses the theme's overlay)
+#
+# Add a new section by copying a block and giving it a unique `id`.
+#-------------------------------
+
+page:
+  title: Gallery
+  description: A collection of scanned specimens, renders, and visual work.
+
+sections:
+  - title: 3D Fossils
+    id: fossils
+    description: Photogrammetry scans of specimens from my collection. Click a specimen to open it in an interactive 3D viewer — drag to rotate, scroll to zoom.
+    layout: models
+    columns: 3          # cards per row on desktop: 2, 3, or 4
+    items:
+      - title: Trilobite
+        subtitle: Elrathia kingii
+        image: /images/gallery/fossils/trilobite.jpg
+        model: /models/fossils/trilobite.glb
+        caption: Wheeler Shale, Utah. Middle Cambrian, ~505 Ma.
+        # poster: /images/gallery/fossils/trilobite-poster.webp   # optional, shown while the model loads
+        # download: true                                          # optional, adds a "Download .glb" link in the popup
+
+      - title: Ammonite
+        subtitle: Dactylioceras commune
+        image: /images/gallery/fossils/ammonite.jpg
+        model: /models/fossils/ammonite.glb
+        caption: Whitby, North Yorkshire. Early Jurassic, ~180 Ma.
+
+      - title: Shark Tooth
+        subtitle: Otodus megalodon
+        image: /images/gallery/fossils/megalodon-tooth.jpg
+        model: /models/fossils/megalodon-tooth.glb
+        caption: Hawthorn Formation, South Carolina. Miocene, ~15 Ma.
