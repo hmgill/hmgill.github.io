@@ -34,6 +34,7 @@
     3.9-Pagination
     3.10-Footer
     3.11-Gallery
+    3.11.1-Gallery Page + 3D Viewer
     3.12-Buttons
     3.13-Contact
     3.14-Section Resume
@@ -105,6 +106,8 @@
 {% include_relative _3-modules/footer.scss %}
 /* >>>>>>>>>>>>>> :: 3.11-Gallery <<<<<<<<<<<<<<< */
 {% include_relative _3-modules/gallery.scss %}
+/* >>>>>>>>>>>>>> :: 3.11.1-Gallery Page + 3D Viewer <<<<<<<<<<<<<<< */
+{% include_relative _3-modules/gallery-page.scss %}
 /* >>>>>>>>>>>>>> :: 3.12-Buttons <<<<<<<<<<<<<<< */
 {% include_relative _3-modules/buttons.scss %}
 /* >>>>>>>>>>>>>> :: 3.13-Contact <<<<<<<<<<<<<<< */
