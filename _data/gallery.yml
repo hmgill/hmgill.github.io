@@ -33,4 +33,11 @@ sections:
         image: /images/gallery/fossils/fish1.PNG
         model: /models/fossils/fish1.glb
         caption: Green River Formation. Wyoming.
-        download: true                                          
+        download: true
+
+      - title: Unknown Fish
+        subtitle: Unknown 
+        image: /images/gallery/fossils/fish2.PNG
+        model: /models/fossils/fish2.glb
+        caption: Green River Formation. Wyoming.
+        download: true          
