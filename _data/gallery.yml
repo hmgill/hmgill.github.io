@@ -40,4 +40,11 @@ sections:
         image: /images/gallery/fossils/fish2.PNG
         model: /models/fossils/fish2.glb
         caption: Green River Formation. Wyoming.
-        download: true          
+        download: true
+
+      - title: Ammonite 
+        subtitle: Unknown  
+        image: /images/gallery/fossils/shell.PNG
+        model: /models/fossils/shell.glb
+        caption: Wyoming.
+        download: true            
