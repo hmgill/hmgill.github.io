@@ -47,4 +47,11 @@ sections:
         image: /images/gallery/fossils/shell.PNG
         model: /models/fossils/shell.glb
         caption: Wyoming.
-        download: true            
+        download: true
+        
+      - title: Petrified Wood 
+        subtitle: Unknown  
+        image: /images/gallery/fossils/wood1.PNG
+        model: /models/fossils/wood1.glb
+        caption: Unknown.
+        download: true 
