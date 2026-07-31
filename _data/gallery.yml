@@ -55,3 +55,10 @@ sections:
         model: /models/fossils/wood1.glb
         caption: Unknown.
         download: true 
+
+      - title: Green River Formation Fish  
+        subtitle: Unknown  
+        image: /images/gallery/fossils/fish5.PNG
+        model: /models/fossils/fish5.glb
+        caption: Unknown.
+        download: true         
