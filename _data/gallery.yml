@@ -61,4 +61,11 @@ sections:
         image: /images/gallery/fossils/fish5.PNG
         model: /models/fossils/fish5.glb
         caption: Unknown.
-        download: true         
+        download: true 
+        
+      - title: Coral 
+        subtitle: Unknown  
+        image: /images/gallery/fossils/coral.PNG
+        model: /models/fossils/coral.glb
+        caption: Indiana.
+        download: true     
