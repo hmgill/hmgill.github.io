@@ -68,4 +68,11 @@ sections:
         image: /images/gallery/fossils/coral.PNG
         model: /models/fossils/coral.glb
         caption: Indiana.
+        download: true  
+        
+      - title: Coral 
+        subtitle: Scattered Coral in Sandstone Matrix  
+        image: /images/gallery/fossils/riverbed_fossil.PNG
+        model: /models/fossils/riverbed_fossil.glb
+        caption: Indiana.
         download: true     
