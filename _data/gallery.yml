@@ -75,4 +75,11 @@ sections:
         image: /images/gallery/fossils/riverbed_fossil.PNG
         model: /models/fossils/riverbed_fossil.glb
         caption: Indiana.
+        download: true
+        
+      - title: Ammonite 
+        subtitle: Unknown   
+        image: /images/gallery/fossils/ammonite_2.PNG
+        model: /models/fossils/ammonite_2.glb
+        caption: Unknown.
         download: true     
