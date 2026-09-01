@@ -82,4 +82,11 @@ sections:
         image: /images/gallery/fossils/ammonite_2.PNG
         model: /models/fossils/ammonite_2.glb
         caption: Unknown.
+        download: true
+        
+      - title: Crinoid 
+        subtitle: Parisocrinus sp.    
+        image: /images/gallery/fossils/crinoid_1.PNG
+        model: /models/fossils/crinoid_1.glb
+        caption: Edwardsville Formation, Monroe County, Indiana.
         download: true     
